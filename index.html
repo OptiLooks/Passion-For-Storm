@@ -24,73 +24,77 @@
             background-size: cover; background-position: center; z-index: -1;
         }
 
-        .nav { position: fixed; top: 0; width: 100%; height: 85px; background: rgba(5,5,5,0.98); border-bottom: 2px solid var(--grey-border); display: flex; justify-content: space-between; align-items: center; padding: 0 50px; z-index: 1000; }
-        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 5px; color: #fff; text-transform: uppercase; cursor: pointer; }
+        /* --- NAVEGACION --- */
+        .nav { position: fixed; top: 0; width: 100%; height: 85px; background: rgba(5,5,5,0.98); border-bottom: 2px solid var(--grey-border); display: flex; justify-content: space-between; align-items: center; padding: 0 5%; z-index: 1000; }
+        .logo { font-size: 1.4rem; font-weight: 900; letter-spacing: 3px; color: #fff; text-transform: uppercase; cursor: pointer; }
 
         .btn-action { 
-            padding: 12px 25px; background: none; border: 1px solid var(--accent); color: #fff; 
-            cursor: pointer; font-weight: 900; text-transform: uppercase; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            border-radius: 4px; margin: 5px; font-size: 0.8rem;
+            padding: 10px 20px; background: none; border: 1px solid var(--accent); color: #fff; 
+            cursor: pointer; font-weight: 900; text-transform: uppercase; transition: 0.3s; 
+            border-radius: 4px; margin: 2px; font-size: 0.7rem;
         }
-        .btn-action:hover { transform: scale(1.15); background: var(--accent); color: #000; }
-        .btn-action:active { transform: scale(0.9); }
+        .btn-action:hover { background: var(--accent); color: #000; transform: scale(1.05); }
 
-        .side-panel { position: fixed; top: 0; right: -100%; width: 400px; height: 100%; background: #000; z-index: 2000; transition: 0.5s; padding: 100px 30px; border-left: 2px solid var(--grey-border); overflow-y: auto; }
+        /* --- MENU LATERAL RESPONSIVE --- */
+        .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: #000; z-index: 2000; transition: 0.5s; padding: 100px 30px; border-left: 2px solid var(--grey-border); overflow-y: auto; }
         .side-panel.active { right: 0; }
-        .side-panel a { display: block; color: #fff; text-decoration: none; padding: 20px; margin-bottom: 12px; background: #0a0a0a; border: 1px solid var(--grey-border); font-weight: 900; text-transform: uppercase; transition: 0.3s; }
-        .side-panel a:hover { transform: scale(1.08); border-color: var(--accent); }
+        .side-panel a { display: block; color: #fff; text-decoration: none; padding: 20px; margin-bottom: 12px; background: #0a0a0a; border: 1px solid var(--grey-border); font-weight: 900; text-transform: uppercase; transition: 0.3s; text-align: center; }
 
-        .view { display: none; padding: 140px 8% 100px; min-height: 100vh; }
+        /* --- VISTAS --- */
+        .view { display: none; padding: 120px 5% 60px; min-height: 100vh; }
         .view.active { display: block; }
-        h1.main-title { font-size: 4rem; font-weight: 900; margin-bottom: 50px; color: #fff; text-transform: uppercase; border-left: 15px solid var(--accent); padding-left: 30px; }
-        .section-box { background: var(--bg-panel); border: 1px solid var(--grey-border); padding: 50px; border-radius: 5px; margin-bottom: 60px; }
-        h2.sub-title { color: var(--accent); margin-bottom: 30px; text-transform: uppercase; font-size: 1.8rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        p.text-block { color: #888; text-align: justify; margin-bottom: 20px; font-size: 1.05rem; }
+        h1.main-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 30px; color: #fff; text-transform: uppercase; border-left: 10px solid var(--accent); padding-left: 20px; }
+        .section-box { background: var(--bg-panel); border: 1px solid var(--grey-border); padding: 30px; border-radius: 5px; margin-bottom: 30px; }
+        h2.sub-title { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 1.3rem; }
+        p.text-block { color: #aaa; text-align: justify; font-size: 0.95rem; margin-bottom: 15px; }
 
-        #settings-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 380px; background: #0a0a0a; border: 3px solid var(--accent); padding: 40px; z-index: 5000; display: none; }
-        #onboarding { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; }
-        .step { display: none; max-width: 700px; }
-        .step.active { display: block; }
+        /* --- ADAPTACION A TABLET Y PC --- */
+        @media (min-width: 768px) {
+            .logo { font-size: 1.8rem; letter-spacing: 5px; }
+            .btn-action { font-size: 0.8rem; padding: 12px 25px; }
+            h1.main-title { font-size: 4rem; }
+            .section-box { padding: 50px; }
+        }
 
-        footer { background: #000; border-top: 2px solid var(--grey-border); padding: 40px; text-align: center; color: #555; font-weight: bold; }
+        /* --- STAFF Y REDES GRID --- */
+        .grid-staff { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
+        @media (min-width: 600px) { .grid-staff { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
+        
+        .card { background: #000; border: 1px solid var(--grey-border); padding: 25px; text-align: center; transition: 0.3s; color: #fff; text-decoration: none; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
 
-        .grid-staff { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .card { background: #000; border: 1px solid var(--grey-border); padding: 30px; text-align: center; transition: 0.3s; color: #fff; text-decoration: none; }
-        .card:hover { border-color: var(--accent); transform: scale(1.05); }
+        /* --- MODALES --- */
+        #settings-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 380px; background: #0a0a0a; border: 2px solid var(--accent); padding: 40px; z-index: 5000; display: none; }
+        #onboarding { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px; }
+
+        footer { background: #000; border-top: 1px solid var(--grey-border); padding: 40px; text-align: center; color: #555; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <div class="tornado-bg"></div>
-    <audio id="pop-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+
+    <audio id="pop-sound" preload="auto">
+        <source src="https://actions.google.com/sounds/v1/foley/pop_cork.ogg" type="audio/ogg">
+    </audio>
 
     <div id="onboarding">
-        <div class="step active" id="st1">
-            <h1 style="letter-spacing:10px;">PASSION FOR STORM</h1>
-            <p style="margin: 20px 0;">Sincronizando protocolos con la red de ItsZuuk...</p>
-            <button class="btn-action" onclick="nextS(2)">ACCEDER</button>
-        </div>
-        <div class="step" id="st2">
-            <h2>PERFIL DE USUARIO</h2>
-            <button class="btn-action" onclick="nextS(3)">OBSERVADOR CIVIL</button>
-            <button class="btn-action" onclick="nextS(3)">OPERADOR STAFF</button>
-        </div>
-        <div class="step" id="st3">
-            <h2>NOTIFICACIONES</h2>
-            <button class="btn-action" onclick="closeO()">ACTIVAR SONIDOS POP</button>
-            <button class="btn-action" onclick="closeO()">MODO SILENCIOSO</button>
+        <div>
+            <h1 style="letter-spacing:8px; color: #fff; margin-bottom: 20px;">PASSION FOR STORM</h1>
+            <p style="color: #888; margin-bottom: 30px; font-size: 0.9rem;">Para Entrar a La web Necesitas aceptar Las Cookies de la Web</p>
+            <button class="btn-action" style="font-size: 1rem;" onclick="closeO()">Aceptar</button>
         </div>
     </div>
 
     <div id="settings-modal">
-        <h2>CENTRO DE AJUSTES</h2>
-        <select onchange="changeColor(this.value)" style="width:100%; padding:15px; background:#000; color:#fff; margin: 20px 0; border: 1px solid #333;">
-            <option value="#555555">GRIS SIGILO</option>
-            <option value="#ff0000">ROJO ALERTA</option>
-            <option value="#00f2ff">CIAN RADAR</option>
-            <option value="#ffd700">ORO ELITE</option>
+        <h2 style="color:#fff; margin-bottom:20px; text-align:center;">AJUSTES</h2>
+        <select onchange="changeColor(this.value)" style="width:100%; padding:15px; background:#000; color:#fff; border: 1px solid #333; margin-bottom:20px;">
+            <option value="#555555">GRIS</option>
+            <option value="#ff0000">ROJO</option>
+            <option value="#00f2ff">CIAN</option>
+            <option value="#ffa500">NARANJA</option>
         </select>
-        <button class="btn-action" style="width:100%;" onclick="toggleSettings()">APLICAR</button>
+        <button class="btn-action" style="width:100%;" onclick="toggleSettings()">LISTO</button>
     </div>
 
     <nav class="nav">
@@ -102,136 +106,98 @@
     </nav>
 
     <div class="side-panel" id="sideMenu">
-        <a href="#" onclick="showV('inicio')">Historia</a>
+        <a href="#" onclick="showV('inicio')">Info</a>
         <a href="#" onclick="showV('manual')">Seguridad</a>
-        <a href="#" onclick="showV('tecnico')">Staff Tecnico</a>
-        <a href="#" onclick="showV('proyectos')">Futuro 2027</a>
-        <a href="#" onclick="showV('redes')">Redes Oficiales</a>
+        <a href="#" onclick="showV('tecnico')">Staff</a>
+        <a href="#" onclick="showV('proyectos')">Proyectos</a>
+        <a href="#" onclick="showV('redes')">Redes</a>
     </div>
 
     <section id="inicio" class="view active">
-        <h1 class="main-title">Bienvenido</h1>
+        <h1 class="main-title">Passion For Storm</h1>
         <div class="section-box">
-            <h2 class="sub-title">Historia y Transicion</h2>
-            <p class="text-block">La red Passion For Storm no nacio de la nada, es el fruto de una evolucion constante que inicio en la plataforma TikTok bajo el nombre de MeteoRed.</p>
-            <p class="text-block">Desde el primer dia, el objetivo de ItsZuuk fue claro: democratizar la informacion meteorologica severa para que llegue a todos sin filtros innecesarios.</p>
-            <p class="text-block">Originalmente, la cuenta MeteoRed0 servia como un punto de encuentro para entusiastas que compartian reportes de granizo y tormentas en tiempo real.</p>
-            <p class="text-block">Con el tiempo, la comunidad crecio exponencialmente, exigiendo un nivel de analisis mucho mas tecnico y una identidad propia que nos separara del resto.</p>
-            <p class="text-block">La transicion a Passion For Storm marco el inicio de una era operativa donde la vigilancia se volvio una mision de tiempo completo para el equipo.</p>
-            <p class="text-block">Brindamos ayuda gratuita porque entendemos que en paises con climas tan erraticos, la informacion preventiva salva vidas y protege bienes.</p>
-            <p class="text-block">ItsZuuk, como owner y fundador, ha liderado esta vision manteniendo siempre la transparencia en cada reporte emitido por la red.</p>
-            <p class="text-block">Nuestra funcionalidad operativa se basa en la triangulacion de datos de radar, modelos de prediccion y observadores directos en el campo de accion.</p>
-            <p class="text-block">No somos una agencia oficial, pero trabajamos con la rigurosidad de una, analizando cada supercelda con pasion y precision quirurgica.</p>
-            <p class="text-block">El cambio de marca permitio que Passion For Storm se consolidara como una red independiente, libre de burocracias y enfocada en la inmediatez.</p>
-            <p class="text-block">Agradecemos a cada miembro que estuvo desde los inicios en TikTok y que hoy sigue confiando en nuestra capacidad de vigilancia extrema.</p>
-            <p class="text-block">Cada alerta que emitimos lleva detras horas de sueno sacrificadas y un monitoreo constante de la reflectividad y velocidad del viento.</p>
-            <p class="text-block">La historia de esta red se escribe con cada tormenta superada y con cada civil que logra ponerse a resguardo gracias a nuestros avisos.</p>
-            <p class="text-block">Miramos al futuro con la conviccion de que la meteorologia es un derecho y que Passion For Storm sera siempre su principal guardian.</p>
-            <p class="text-block">Bienvenidos a la central; aqui la pasion por el clima severo se transforma en seguridad para toda nuestra comunidad activa.</p>
+            <h2 class="sub-title">Sobre nosotros</h2>
+            <p class="text-block">Esta web es el nuevo sitio de lo que antes era MeteoRed en TikTok. No somos una empresa grande, solo somos un grupo de personas que reportan el clima.</p>
+            <p class="text-block">Decidimos hacer un cambio de nombre a Passion For Storm para tener algo mas propio, pero el equipo sigue siendo el mismo de siempre.</p>
+            <p class="text-block">Nuestra funcion es simple: cuando hay tormentas fuertes o riesgo de granizo, avisamos por WhatsApp y TikTok para que la gente este al tanto.</p>
+            <p class="text-block">ItsZuuk es quien maneja la red y coordina los reportes que van saliendo en el dia a dia segun lo que vemos en los radares.</p>
         </div>
     </section>
 
     <section id="manual" class="view">
         <h1 class="main-title">Seguridad</h1>
         <div class="section-box">
-            <h2 class="sub-title">Manual de Tornados</h2>
-            <p class="text-block">La seguridad ante un evento de tornado comienza con la identificacion temprana de los rasgos visuales de una tormenta rotativa.</p>
-            <p class="text-block">Brindamos ayuda instruyendo sobre la nube pared (wall cloud), que es el primer indicador de que una supercelda esta intentando producir un tornado.</p>
-            <p class="text-block">La funcionalidad de un refugio efectivo no depende del lujo, sino de la cantidad de paredes que te separen del viento exterior violento.</p>
-            <p class="text-block">Si el aviso de tornado es inminente, debes dirigirte a la habitacion mas interna de tu hogar, preferiblemente un bano o un sotano reforzado.</p>
-            <p class="text-block">Es un mito peligroso abrir las ventanas para equilibrar la presion; esto solo facilita que el viento destruya tu techo desde adentro hacia afuera.</p>
-            <p class="text-block">Cubrirse con colchones o mantas pesadas puede protegerte de los escombros voladores, que son la causa numero uno de lesiones fatales.</p>
-            <p class="text-block">Si te encuentras en un vehiculo, nunca busques refugio bajo un puente; el efecto Venturi acelera el viento y los escombros en esos puntos.</p>
-            <p class="text-block">En campo abierto, busca la zona mas baja posible, acuestate boca abajo y protege tu nuca con las manos con firmeza absoluta.</p>
-            <p class="text-block">La funcionalidad operativa de Passion For Storm es avisarte con el mayor tiempo de anticipacion posible basado en la firma de gancho del radar.</p>
-            <p class="text-block">Manten tu radio de emergencia o telefono con volumen maximo; el silencio de la atmosfera antes del impacto es la senal de actuar de inmediato.</p>
-            <p class="text-block">Brindamos ayuda tecnica explicando que el granizo de gran tamano suele preceder a la zona de rotacion mas peligrosa de la tormenta.</p>
-            <p class="text-block">No salgas a filmar; los tornados pueden estar envueltos en lluvia y ser invisibles hasta que estan demasiado cerca para escapar con vida.</p>
-            <p class="text-block">La calma durante el paso del evento te permitira tomar mejores decisiones de supervivencia para ti y para tus familiares cercanos.</p>
-            <p class="text-block">Una vez que la tormenta pase, ten cuidado con las lineas electricas caidas y las fugas de gas que suelen ocurrir tras danos estructurales.</p>
-            <p class="text-block">Este manual es una herramienta de vida que Passion For Storm pone a tu disposicion para enfrentar la furia de la naturaleza con sabiduria.</p>
-        </div>
-        <div class="section-box">
-            <h2 class="sub-title">Riesgo Hidrico</h2>
-            <p class="text-block">Las inundaciones repentinas o "flash floods" son responsables de mas muertes que los propios tornados debido a la subestimacion del agua.</p>
-            <p class="text-block">Brindamos ayuda constante recordando que solo 15 centimetros de agua en movimiento pueden derribar a un adulto promedio sin esfuerzo.</p>
-            <p class="text-block">La funcionalidad de la prevencion hidrica consiste en conocer las zonas bajas de tu localidad y evitarlas durante tormentas estacionarias.</p>
-            <p class="text-block">Nunca intentes cruzar un vado o una calle inundada con tu vehiculo; el motor puede apagarse y seras arrastrado por la corriente en segundos.</p>
-            <p class="text-block">La ayuda real que ofrecemos es el monitoreo de acumulados de lluvia en tiempo real para predecir desbordes de arroyos o canales urbanos.</p>
-            <p class="text-block">Manten limpios los desagues de tu hogar para evitar que el agua ingrese por acumulacion interna durante eventos de lluvia torrencial extrema.</p>
-            <p class="text-block">Si el agua comienza a entrar a tu casa, corta la energia electrica de inmediato para evitar riesgos de electrocucion masiva en la zona.</p>
-            <p class="text-block">Tener una mochila de emergencia con documentos secos y suministros basicos es parte de la funcionalidad de un ciudadano responsable ante el clima.</p>
-            <p class="text-block">La prevencion es la base de Passion For Storm; no esperes a que el agua llegue a tu puerta para planificar una ruta de evacuacion segura.</p>
-            <p class="text-block">Brindamos ayuda informando sobre la saturacion del suelo, lo cual indica que cualquier lluvia nueva se convertira automaticamente en escorrentia peligrosa.</p>
+            <h2 class="sub-title">Instrucciones</h2>
+            <p class="text-block">Si hay aviso de tornado o vientos muy fuertes, metete en la pieza mas interna de la casa. No te quedes cerca de las ventanas por los vidrios.</p>
+            <p class="text-block">La nube pared es la que gira y puede bajar un tornado, si ves una asi, busca refugio rapido y no te quedes mirando afuera.</p>
+            <p class="text-block">No cruces calles inundadas ni arroyos con el auto, el agua tiene mucha fuerza y te puede arrastrar.</p>
         </div>
     </section>
 
     <section id="tecnico" class="view">
         <h1 class="main-title">Equipo Staff</h1>
-        <div class="grid-staff" style="margin-bottom:40px;">
-            <div class="card"><h3>ITSZUUK</h3><p>OWNER / FUNDADOR</p></div>
+        <div class="grid-staff">
+            <div class="card"><h3>ITSZUUK</h3><p>OWNER</p></div>
             <div class="card"><h3>BAUTISTORM</h3><p>CO-OWNER</p></div>
-            <div class="card"><h3>SANTYSTORM</h3><p>PRIMER COLABORADOR</p></div>
+            <div class="card"><h3>SANTYSTORM</h3><p>COLABORADOR</p></div>
             <div class="card"><h3>SANTINO</h3><p>COLABORADOR</p></div>
             <div class="card"><h3>GIU</h3><p>COLABORADOR</p></div>
             <div class="card"><h3>TEAM CAT</h3><p>COLABORADOR</p></div>
-            <div class="card"><h3>MIEMBROS</h3><p>17 OPERATIVOS</p></div>
-        </div>
-        <div class="section-box">
-            <h2 class="sub-title">Herramientas Operativas</h2>
-            <p class="text-block">El staff tecnico de Passion For Storm utiliza una combinacion de software propietario y herramientas de acceso publico para el monitoreo.</p>
-            <p class="text-block">La funcionalidad del anemometro en nuestras estaciones terrestres permite validar las velocidades de viento que el radar estima a distancia.</p>
-            <p class="text-block">Brindamos ayuda analizando el CAPE (Energia Potencial Convectiva Disponible), que nos dice que tan explosiva puede ser la atmosfera hoy.</p>
-            <p class="text-block">Cada colaborador tiene la mision de reportar condiciones locales de visibilidad, presion barometrica y formacion de nubes convectivas.</p>
-            <p class="text-block">La funcionalidad operativa del equipo staff garantiza que las alertas en WhatsApp y TikTok sean verificadas por al menos dos analistas distintos.</p>
-            <p class="text-block">No nos basamos solo en un modelo meteorologico; comparamos el GFS, ECMWF y modelos de alta resolucion como el HRRR para mayor certeza.</p>
-            <p class="text-block">La ayuda tecnica profesional que ofrecemos incluye la interpretacion de mapas de helicidad, fundamentales para predecir la rotacion de tormentas.</p>
-            <p class="text-block">El equipo de 17 miembros trabaja de forma coordinada, cubriendo diferentes zonas horarias y geograficas para una vigilancia total de la red.</p>
-            <p class="text-block">Utilizamos sistemas de comunicacion encriptados para coordinar los lanzamientos de avisos de corto plazo durante crisis meteorologicas severas.</p>
-            <p class="text-block">Passion For Storm invierte tiempo en la capacitacion tecnica de sus miembros para asegurar que cada dato compartido sea de la mas alta calidad.</p>
+            <div class="card"><h3>MIEMBROS</h3><p>17 EN TOTAL</p></div>
         </div>
     </section>
 
     <section id="proyectos" class="view">
         <h1 class="main-title">Futuro</h1>
         <div class="section-box">
-            <h2 class="sub-title">Proyecto Sondas 2027</h2>
-            <p class="text-block">Para el ano 2027, Passion For Storm tiene como objetivo principal el lanzamiento de nuestras propias sondas atmosfericas independientes.</p>
-            <p class="text-block">La funcionalidad de estas sondas sera medir directamente la temperatura, humedad y presion en diferentes capas de la troposfera local.</p>
-            <p class="text-block">Brindamos ayuda cientifica al recolectar datos que muchas veces las estaciones oficiales no llegan a capturar por falta de densidad de red.</p>
-            <p class="text-block">Este proyecto permitira que Passion For Storm tenga sus propios Skew-T (diagramas termodinamicos) para predecir tormentas con precision inedita.</p>
-            <p class="text-block">La funcionalidad operativa de las sondas sera clave durante los dias de riesgo de tiempo severo, lanzandolas horas antes del inicio de la conveccion.</p>
-            <p class="text-block">Estamos trabajando en alianzas tecnologicas para asegurar que el rastreo GPS de cada sonda sea compartido en tiempo real con la comunidad.</p>
-            <p class="text-block">La investigacion es un pilar de nuestra red; no solo reportamos el clima, queremos entender por que sucede de la forma en que lo hace.</p>
-            <p class="text-block">El Proyecto Sondas 2027 posicionara a Passion For Storm como una de las redes ciudadanas mas avanzadas tecnologicamente en el continente.</p>
-            <p class="text-block">Brindamos ayuda informando que este avance permitira alertas de granizo mucho mas exactas, reduciendo los falsos positivos significativamente.</p>
-            <p class="text-block">El futuro de la red es la autonomia informativa, y el ano 2027 sera el punto de inflexion para nuestra capacidad de analisis atmosferico profundo.</p>
+            <h2 class="sub-title">Sondas 2027</h2>
+            <p class="text-block">Para el Año 2027, Tenemos Pensado Hacer nuestras Propias Sondas y Colaborar Con Windy.app.</p>
         </div>
     </section>
 
     <section id="redes" class="view">
-        <h1 class="main-title">Comunicaciones</h1>
+        <h1 class="main-title">Redes</h1>
         <div class="grid-staff">
-            <a href="https://chat.whatsapp.com/LPiTeY0sGJ59Se8qPQuvID" target="_blank" class="card" style="background:#075e54; border:none;">
-                <i class="fab fa-whatsapp" style="font-size: 2rem;"></i><br><br><h3>WHATSAPP OFICIAL</h3>
+            <a href="https://chat.whatsapp.com/LPiTeY0sGJ59Se8qPQuvID" target="_blank" class="card" style="background:#075e54; border:none;" onclick="playPop()">
+                <i class="fab fa-whatsapp" style="font-size: 2rem;"></i><br><br><h3>WHATSAPP</h3>
             </a>
-            <a href="https://www.tiktok.com/@meteored0?_r=1&_t=ZS-95vOQG3LdIL" target="_blank" class="card" style="background:#000; border: 1px solid #333;">
-                <i class="fab fa-tiktok" style="font-size: 2rem;"></i><br><br><h3>TIKTOK (METEORED0)</h3>
+            <a href="https://www.tiktok.com/@meteored0" target="_blank" class="card" style="background:#000; border: 1px solid #333;" onclick="playPop()">
+                <i class="fab fa-tiktok" style="font-size: 2rem;"></i><br><br><h3>TIKTOK</h3>
             </a>
         </div>
     </section>
 
     <footer>
-        <p>Passion For Storm - Red de Vigilancia Independiente</p>
-        <p>CopyRight 2026 - Operado por ItsZuuk (MeteoRed Owner)</p>
+        <p>Passion For Storm - CopyRight 2026</p>
+        <p>Fundado por ItsZuuk (Owner MeteoRed)</p>
     </footer>
 
     <script>
-        function playPop() { const pop = document.getElementById('pop-sound'); pop.currentTime = 0; pop.play(); }
-        function nextS(n) { playPop(); document.querySelectorAll('.step').forEach(s=>s.classList.remove('active')); document.getElementById('st'+n).classList.add('active'); }
-        function closeO() { playPop(); document.getElementById('onboarding').style.display='none'; document.body.style.overflow='auto'; }
-        function toggleM() { playPop(); document.getElementById('sideMenu').classList.toggle('active'); }
-        function toggleSettings() { playPop(); let p = document.getElementById('settings-modal'); p.style.display = (p.style.display == 'block') ? 'none' : 'block'; }
+        const audio = document.getElementById('pop-sound');
+
+        function playPop() {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
+        }
+
+        function closeO() { 
+            playPop(); 
+            document.getElementById('onboarding').style.display='none'; 
+            document.body.style.overflow='auto'; 
+        }
+
+        function toggleM() { 
+            playPop(); 
+            document.getElementById('sideMenu').classList.toggle('active'); 
+        }
+
+        function toggleSettings() { 
+            playPop(); 
+            let p = document.getElementById('settings-modal'); 
+            p.style.display = (p.style.display == 'block') ? 'none' : 'block'; 
+        }
+
         function showV(id) { 
             playPop();
             document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
@@ -239,11 +205,15 @@
             document.getElementById('sideMenu').classList.remove('active');
             window.scrollTo(0,0);
         }
+
         function changeColor(c) {
             playPop();
             document.documentElement.style.setProperty('--accent', c);
             document.getElementById('settings-modal').style.borderColor = c;
         }
+
+        // Activa el audio para moviles tras el primer click
+        document.addEventListener('click', () => { audio.load(); }, { once: true });
     </script>
 </body>
 </html>
