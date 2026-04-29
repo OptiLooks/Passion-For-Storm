@@ -35,7 +35,7 @@
         }
         .btn-action:hover { background: var(--accent); color: #000; transform: scale(1.05); }
 
-        /* --- MENU LATERAL RESPONSIVE --- */
+        /* --- MENU LATERAL --- */
         .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: #000; z-index: 2000; transition: 0.5s; padding: 100px 30px; border-left: 2px solid var(--grey-border); overflow-y: auto; }
         .side-panel.active { right: 0; }
         .side-panel a { display: block; color: #fff; text-decoration: none; padding: 20px; margin-bottom: 12px; background: #0a0a0a; border: 1px solid var(--grey-border); font-weight: 900; text-transform: uppercase; transition: 0.3s; text-align: center; }
@@ -46,24 +46,21 @@
         h1.main-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 30px; color: #fff; text-transform: uppercase; border-left: 10px solid var(--accent); padding-left: 20px; }
         .section-box { background: var(--bg-panel); border: 1px solid var(--grey-border); padding: 30px; border-radius: 5px; margin-bottom: 30px; }
         h2.sub-title { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 1.3rem; }
-        p.text-block { color: #aaa; text-align: justify; font-size: 0.95rem; margin-bottom: 15px; }
+        .text-block { color: #aaa; text-align: justify; font-size: 0.95rem; margin-bottom: 15px; }
 
-        /* --- ADAPTACION A TABLET Y PC --- */
+        /* --- SUGERENCIAS (Local Storage) --- */
+        .sug-card { background: #000; border: 1px solid var(--grey-border); padding: 15px; margin-bottom: 10px; border-left: 4px solid var(--accent); }
+
+        /* --- ADAPTACION --- */
         @media (min-width: 768px) {
             .logo { font-size: 1.8rem; letter-spacing: 5px; }
-            .btn-action { font-size: 0.8rem; padding: 12px 25px; }
             h1.main-title { font-size: 4rem; }
-            .section-box { padding: 50px; }
         }
 
-        /* --- STAFF Y REDES GRID --- */
         .grid-staff { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
-        @media (min-width: 600px) { .grid-staff { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); } }
-        
         .card { background: #000; border: 1px solid var(--grey-border); padding: 25px; text-align: center; transition: 0.3s; color: #fff; text-decoration: none; }
         .card:hover { border-color: var(--accent); transform: translateY(-5px); }
 
-        /* --- MODALES --- */
         #settings-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 380px; background: #0a0a0a; border: 2px solid var(--accent); padding: 40px; z-index: 5000; display: none; }
         #onboarding { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center; padding: 30px; }
 
@@ -109,7 +106,8 @@
         <a href="#" onclick="showV('inicio')">Info</a>
         <a href="#" onclick="showV('manual')">Seguridad</a>
         <a href="#" onclick="showV('tecnico')">Staff</a>
-        <a href="#" onclick="showV('proyectos')">Proyectos</a>
+        <a href="#" onclick="showV('chat')">Chat</a>
+        <a href="#" onclick="showV('sugerencias')">Sugerencias</a>
         <a href="#" onclick="showV('redes')">Redes</a>
     </div>
 
@@ -117,20 +115,26 @@
         <h1 class="main-title">Passion For Storm</h1>
         <div class="section-box">
             <h2 class="sub-title">Sobre nosotros</h2>
-            <p class="text-block">Esta web es el nuevo sitio de lo que antes era MeteoRed en TikTok. No somos una empresa grande, solo somos un grupo de personas que reportan el clima.</p>
-            <p class="text-block">Decidimos hacer un cambio de nombre a Passion For Storm para tener algo mas propio, pero el equipo sigue siendo el mismo de siempre.</p>
-            <p class="text-block">Nuestra funcion es simple: cuando hay tormentas fuertes o riesgo de granizo, avisamos por WhatsApp y TikTok para que la gente este al tanto.</p>
-            <p class="text-block">ItsZuuk es quien maneja la red y coordina los reportes que van saliendo en el dia a dia segun lo que vemos en los radares.</p>
+            <p class="text-block">Reportamos tormentas y riesgo de granizo en tiempo real.</p>
         </div>
     </section>
 
-    <section id="manual" class="view">
-        <h1 class="main-title">Seguridad</h1>
+    <section id="chat" class="view">
+        <h1 class="main-title">Chat Público</h1>
+        <div class="section-box" style="padding: 10px;">
+            <iframe src="https://www5.cbox.ws/box/?boxid=962714&boxtag=uYVPLC" width="100%" height="450" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+        </div>
+    </section>
+
+    <section id="sugerencias" class="view">
+        <h1 class="main-title">Sugerencias</h1>
         <div class="section-box">
-            <h2 class="sub-title">Instrucciones</h2>
-            <p class="text-block">Si hay aviso de tornado o vientos muy fuertes, metete en la pieza mas interna de la casa. No te quedes cerca de las ventanas por los vidrios.</p>
-            <p class="text-block">La nube pared es la que gira y puede bajar un tornado, si ves una asi, busca refugio rapido y no te quedes mirando afuera.</p>
-            <p class="text-block">No cruces calles inundadas ni arroyos con el auto, el agua tiene mucha fuerza y te puede arrastrar.</p>
+            <h2 class="sub-title">Deja tu propuesta</h2>
+            <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+                <input type="text" id="sug-input" placeholder="Tu idea..." style="flex:1; padding:15px; background:#000; border:1px solid var(--grey-border); color:white;">
+                <button class="btn-action" onclick="enviarSugerencia()">Enviar</button>
+            </div>
+            <div id="sug-lista"></div>
         </div>
     </section>
 
@@ -140,28 +144,16 @@
             <div class="card"><h3>ITSZUUK</h3><p>OWNER</p></div>
             <div class="card"><h3>BAUTISTORM</h3><p>CO-OWNER</p></div>
             <div class="card"><h3>SANTYSTORM</h3><p>COLABORADOR</p></div>
-            <div class="card"><h3>SANTINO</h3><p>COLABORADOR</p></div>
-            <div class="card"><h3>GIU</h3><p>COLABORADOR</p></div>
-            <div class="card"><h3>TEAM CAT</h3><p>COLABORADOR</p></div>
-            <div class="card"><h3>MIEMBROS</h3><p>17 EN TOTAL</p></div>
-        </div>
-    </section>
-
-    <section id="proyectos" class="view">
-        <h1 class="main-title">Futuro</h1>
-        <div class="section-box">
-            <h2 class="sub-title">Sondas 2027</h2>
-            <p class="text-block">Para el Año 2027, Tenemos Pensado Hacer nuestras Propias Sondas y Colaborar Con Windy.app.</p>
         </div>
     </section>
 
     <section id="redes" class="view">
         <h1 class="main-title">Redes</h1>
         <div class="grid-staff">
-            <a href="https://chat.whatsapp.com/LPiTeY0sGJ59Se8qPQuvID" target="_blank" class="card" style="background:#075e54; border:none;" onclick="playPop()">
+            <a href="https://chat.whatsapp.com/LPiTeY0sGJ59Se8qPQuvID" target="_blank" class="card" style="background:#075e54; border:none;">
                 <i class="fab fa-whatsapp" style="font-size: 2rem;"></i><br><br><h3>WHATSAPP</h3>
             </a>
-            <a href="https://www.tiktok.com/@meteored0" target="_blank" class="card" style="background:#000; border: 1px solid #333;" onclick="playPop()">
+            <a href="https://www.tiktok.com/@meteored0" target="_blank" class="card" style="background:#000; border: 1px solid #333;">
                 <i class="fab fa-tiktok" style="font-size: 2rem;"></i><br><br><h3>TIKTOK</h3>
             </a>
         </div>
@@ -169,22 +161,18 @@
 
     <footer>
         <p>Passion For Storm - CopyRight 2026</p>
-        <p>Fundado por ItsZuuk (Owner MeteoRed)</p>
     </footer>
 
     <script>
         const audio = document.getElementById('pop-sound');
 
-        function playPop() {
-            audio.pause();
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
-        }
+        function playPop() { audio.play().catch(() => {}); }
 
         function closeO() { 
             playPop(); 
             document.getElementById('onboarding').style.display='none'; 
             document.body.style.overflow='auto'; 
+            renderSugerencias();
         }
 
         function toggleM() { 
@@ -212,7 +200,27 @@
             document.getElementById('settings-modal').style.borderColor = c;
         }
 
-        // Activa el audio para moviles tras el primer click
+        // Sugerencias Personales (Local Storage)
+        function enviarSugerencia() {
+            const input = document.getElementById('sug-input');
+            const texto = input.value.trim();
+            if(!texto) return;
+            let sugs = JSON.parse(localStorage.getItem('sug_storm') || '[]');
+            sugs.push(texto);
+            localStorage.setItem('sug_storm', JSON.stringify(sugs));
+            input.value = "";
+            playPop();
+            renderSugerencias();
+        }
+
+        function renderSugerencias() {
+            const lista = document.getElementById('sug-lista');
+            let sugs = JSON.parse(localStorage.getItem('sug_storm') || '[]');
+            lista.innerHTML = sugs.reverse().map(s => `
+                <div class="sug-card"><p class="text-block" style="margin:0">Mi Sugerencia es: "${s}"</p></div>
+            `).join('');
+        }
+
         document.addEventListener('click', () => { audio.load(); }, { once: true });
     </script>
 </body>
